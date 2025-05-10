@@ -136,9 +136,12 @@
 
         .controls {
             display: flex;
+            flex-wrap: wrap;
+            /* Permite que os botões quebrem linha em telas menores */
             justify-content: center;
-            gap: 15px;
-            margin-bottom: 10px;
+            gap: 10px;
+            /* Espaçamento consistente entre os botões */
+            margin-bottom: 20px;
         }
 
         .btn {
@@ -162,12 +165,25 @@
 
         .status-container {
             display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-top: 15px;
-            margin-bottom: 20px;
-            font-size: 16px;
+            gap: 20px;
+            /* Espaçamento entre os ícones */
             align-items: center;
+            /* Centraliza os itens verticalmente */
+            justify-content: center;
+            /* Centraliza o conteúdo */
+            background-color: rgba(255, 255, 255, 0.8);
+            /* Fundo claro */
+            border-radius: 5px;
+            /* Bordas arredondadas */
+            padding: 5px 10px;
+            /* Espaçamento interno */
+            min-width: 200px;
+            /* Garante espaço suficiente para os elementos */
+        }
+
+        .status-container .icon {
+            color: #000;
+            /* Cor do texto para contraste com o fundo claro */
         }
 
         .icon {
@@ -176,49 +192,108 @@
             gap: 5px;
         }
 
+        .icon-btn.theme-arrow {
+            width: 40px;
+            /* Define uma largura fixa */
+            height: 40px;
+            /* Define uma altura fixa igual à largura */
+            border-radius: 50%;
+            /* Torna o botão circular */
+            display: flex;
+            /* Garante alinhamento do conteúdo */
+            justify-content: center;
+            /* Centraliza horizontalmente */
+            align-items: center;
+            /* Centraliza verticalmente */
+            padding: 0;
+            /* Remove qualquer espaçamento interno */
+            box-sizing: border-box;
+            /* Inclui bordas e preenchimento no tamanho total */
+        }
+
         #moveCounter,
         #timer {
-            min-width: 90px;
+            min-width: 80px;
+            /* Define uma largura mínima suficiente */
             text-align: center;
+            /* Centraliza o texto */
             display: inline-block;
+            /* Garante que o elemento respeite a largura mínima */
+            font-size: 18px;
+            /* Tamanho da fonte */
+            font-weight: bold;
+            /* Deixa o texto em negrito */
         }
 
         .main-container {
             display: flex;
-            align-items: flex-start;
-            gap: 40px;
+            flex-direction: column;
+            /* Organiza os elementos verticalmente */
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            /* Espaçamento entre os elementos */
             margin-top: 20px;
         }
 
         .game-container {
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            /* Alinha os elementos verticalmente */
             align-items: center;
-            width: 600px;
-            height: 600px;
-            margin-top: -60px;
-            /* Move o tabuleiro para cima */
-            position: relative;
-            /* Mantém o controle sem remover do fluxo */
+            /* Centraliza os elementos horizontalmente */
+            justify-content: center;
+            /* Centraliza os elementos verticalmente */
+            width: 100%;
+            max-width: 520px;
+            /* Limita a largura máxima */
+            margin: 0 auto;
+            /* Centraliza o contêiner na página */
+            box-sizing: border-box;
+        }
+
+        .board-options {
+            display: flex;
+            justify-content: space-evenly;
+            /* Distribui os ícones uniformemente */
+            align-items: center;
+            /* Centraliza os ícones verticalmente */
+            gap: 15px;
+            /* Espaçamento uniforme entre os ícones */
+            padding: 10px;
+            background-color: inherit;
+            border-radius: 10px 10px 0 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box;
+            width: 100%;
+            /* Garante que ocupe toda a largura disponível */
         }
 
         .board {
             display: grid;
-            gap: 4px;
+            gap: 5px;
             background-color: #002147;
-            padding: 10px;
+            padding: 20px;
             border-radius: 10px;
+            width: 400px;
+            /* Reduz a largura */
+            height: 400px;
+            /* Reduz a altura */
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(4, 1fr);
+            box-sizing: border-box;
         }
 
         .tile {
-            width: 70px;
-            height: 70px;
+            width: 100%;
+            height: 100%;
             background-color: #ffffff;
             color: #000;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 20px;
+            font-size: 24px;
+            /* Aumentei o tamanho da fonte */
             font-weight: bold;
             border-radius: 5px;
             cursor: pointer;
@@ -288,7 +363,8 @@
         }
 
         .win-message p {
-            margin-bottom: 8px;
+            margin-bottom: 20px;
+            /* Espaçamento entre o texto e os botões */
         }
 
         .play-again-btn {
@@ -392,56 +468,819 @@
         .theme-toggle-btn:hover {
             background-color: #004080;
         }
+
+        /* Tema 1: Azul */
+        body.theme-blue .board {
+            background-color: #002147;
+        }
+
+        body.theme-blue .tile {
+            background-color: #ffffff;
+            /* Fundo branco */
+            color: #002147;
+            /* Texto azul escuro */
+        }
+
+        body.theme-blue .tile.correct-position {
+            background-color: #007BFF;
+            /* Azul vibrante */
+            color: #ffffff;
+            /* Texto branco */
+        }
+
+        body.theme-blue .tile.empty {
+            background-color: #002147;
+            /* Cor do tabuleiro azul */
+        }
+
+        /* Tema 2: Verde */
+        body.theme-green .board {
+            background-color: #004d00;
+        }
+
+        body.theme-green .tile {
+            background-color: #e6ffe6;
+            /* Fundo verde claro */
+            color: #004d00;
+            /* Texto verde escuro */
+        }
+
+        body.theme-green .tile.correct-position {
+            background-color: #66ff66;
+            color: #003300;
+        }
+
+        body.theme-green .tile.empty {
+            background-color: #004d00;
+            /* Cor do tabuleiro verde */
+        }
+
+        /* Tema 3: Vermelho */
+        body.theme-red .board {
+            background-color: #660000;
+        }
+
+        body.theme-red .tile {
+            background-color: #ffe6e6;
+            /* Fundo vermelho claro */
+            color: #660000;
+            /* Texto vermelho escuro */
+        }
+
+        body.theme-red .tile.correct-position {
+            background-color: #ff6666;
+            color: #330000;
+        }
+
+        body.theme-red .tile.empty {
+            background-color: #660000;
+            /* Cor do tabuleiro vermelho */
+        }
+
+        /* Tema 4: Roxo */
+        body.theme-purple .board {
+            background-color: #4b0082;
+        }
+
+        body.theme-purple .tile {
+            background-color: #f3e5f5;
+            /* Fundo roxo claro */
+            color: #4b0082;
+            /* Texto roxo escuro */
+        }
+
+        body.theme-purple .tile.correct-position {
+            background-color: #d1c4e9;
+            color: #2e004d;
+        }
+
+        body.theme-purple .tile.empty {
+            background-color: #4b0082;
+            /* Cor do tabuleiro roxo */
+        }
+
+        /* Tema 5: Amarelo */
+        body.theme-yellow .board {
+            background-color: #ffcc00;
+        }
+
+        body.theme-yellow .tile {
+            background-color: #fff8e1;
+            /* Fundo amarelo claro */
+            color: #664d00;
+            /* Texto amarelo escuro */
+            border: 2px solid #664d00;
+            /* Borda com a mesma cor do texto */
+        }
+
+        body.theme-yellow .tile.correct-position {
+            background-color: #ffeb3b;
+            color: #664d00;
+        }
+
+        body.theme-yellow .tile.empty {
+            background-color: #ffcc00;
+            /* Cor do tabuleiro amarelo */
+            border: none;
+            /* Remove a borda do bloco vazio */
+        }
+
+        .tile.empty {
+            background-color: inherit;
+            /* Herda a cor do tabuleiro */
+            color: transparent;
+            /* Texto invisível */
+            cursor: default;
+            /* Remove o cursor de interação */
+        }
+
+        /* Tema 1: Azul no modo escuro */
+        body.dark-mode.theme-blue .board {
+            background-color: #00122b;
+            /* Azul escuro */
+        }
+
+        body.dark-mode.theme-blue .tile {
+            background-color: #002147;
+            /* Azul mais claro */
+            color: #ffffff;
+            /* Texto branco */
+        }
+
+        body.dark-mode.theme-blue .tile.correct-position {
+            background-color: #004080;
+            /* Destaque azul escuro */
+            color: #ffffff;
+        }
+
+        body.dark-mode.theme-blue .tile.empty {
+            background-color: #00122b;
+            /* Cor do tabuleiro azul escuro */
+        }
+
+        /* Tema 2: Verde no modo escuro */
+        body.dark-mode.theme-green .board {
+            background-color: #002200;
+            /* Verde escuro */
+        }
+
+        body.dark-mode.theme-green .tile {
+            background-color: #004d00;
+            /* Verde mais claro */
+            color: #ffffff;
+            /* Texto branco */
+        }
+
+        body.dark-mode.theme-green .tile.correct-position {
+            background-color: #006600;
+            /* Destaque verde escuro */
+            color: #ffffff;
+        }
+
+        body.dark-mode.theme-green .tile.empty {
+            background-color: #002200;
+            /* Cor do tabuleiro verde escuro */
+        }
+
+        /* Tema 3: Vermelho no modo escuro */
+        body.dark-mode.theme-red .board {
+            background-color: #330000;
+            /* Vermelho escuro */
+        }
+
+        body.dark-mode.theme-red .tile {
+            background-color: #660000;
+            /* Vermelho mais claro */
+            color: #ffffff;
+            /* Texto branco */
+        }
+
+        body.dark-mode.theme-red .tile.correct-position {
+            background-color: #990000;
+            /* Destaque vermelho escuro */
+            color: #ffffff;
+        }
+
+        body.dark-mode.theme-red .tile.empty {
+            background-color: #330000;
+            /* Cor do tabuleiro vermelho escuro */
+        }
+
+        /* Tema 4: Roxo no modo escuro */
+        body.dark-mode.theme-purple .board {
+            background-color: #2e004d;
+            /* Roxo escuro */
+        }
+
+        body.dark-mode.theme-purple .tile {
+            background-color: #4b0082;
+            /* Roxo mais claro */
+            color: #ffffff;
+            /* Texto branco */
+        }
+
+        body.dark-mode.theme-purple .tile.correct-position {
+            background-color: #6a0dad;
+            /* Destaque roxo escuro */
+            color: #ffffff;
+        }
+
+        body.dark-mode.theme-purple .tile.empty {
+            background-color: #2e004d;
+            /* Cor do tabuleiro roxo escuro */
+        }
+
+        /* Tema 5: Amarelo no modo escuro */
+        body.dark-mode.theme-yellow .board {
+            background-color: #664d00;
+            /* Amarelo escuro */
+        }
+
+        body.dark-mode.theme-yellow .tile {
+            background-color: #ffcc00;
+            /* Amarelo mais claro */
+            color: #000000;
+            /* Texto preto */
+        }
+
+        body.dark-mode.theme-yellow .tile.correct-position {
+            background-color: #ffeb3b;
+            /* Destaque amarelo */
+            color: #000000;
+        }
+
+        body.dark-mode.theme-yellow .tile.empty {
+            background-color: #664d00;
+            /* Cor do tabuleiro amarelo escuro */
+        }
+
+        /* Tema 6: Laranja */
+        body.theme-orange .board {
+            background-color: #FF8C00;
+            /* Laranja escuro */
+        }
+
+        body.theme-orange .tile {
+            background-color: #FFE4B5;
+            /* Laranja claro */
+            color: #8B4500;
+            /* Texto laranja escuro */
+        }
+
+        body.theme-orange .tile.correct-position {
+            background-color: #FFA500;
+            /* Destaque laranja vibrante */
+            color: #ffffff;
+            /* Texto branco */
+        }
+
+        body.theme-orange .tile.empty {
+            background-color: #FF8C00;
+            /* Cor do tabuleiro laranja */
+        }
+
+        /* Tema 7: Rosa */
+        body.theme-pink .board {
+            background-color: #FF1493;
+            /* Rosa escuro */
+        }
+
+        body.theme-pink .tile {
+            background-color: #FFC0CB;
+            /* Rosa claro */
+            color: #8B008B;
+            /* Texto rosa escuro */
+        }
+
+        body.theme-pink .tile.correct-position {
+            background-color: #FF69B4;
+            /* Destaque rosa vibrante */
+            color: #ffffff;
+            /* Texto branco */
+        }
+
+        body.theme-pink .tile.empty {
+            background-color: #FF1493;
+            /* Cor do tabuleiro rosa */
+        }
+
+        /* Tema 8: Cinza */
+        body.theme-gray .board {
+            background-color: #696969;
+            /* Cinza escuro */
+        }
+
+        body.theme-gray .tile {
+            background-color: #D3D3D3;
+            /* Cinza claro */
+            color: #2F4F4F;
+            /* Texto cinza escuro */
+        }
+
+        body.theme-gray .tile.correct-position {
+            background-color: #A9A9A9;
+            /* Destaque cinza médio */
+            color: #ffffff;
+            /* Texto branco */
+        }
+
+        body.theme-gray .tile.empty {
+            background-color: #696969;
+            /* Cor do tabuleiro cinza */
+        }
+
+        /* Tema 6: Laranja no modo escuro */
+        body.dark-mode.theme-orange .board {
+            background-color: #CC7000;
+            /* Laranja escuro */
+        }
+
+        body.dark-mode.theme-orange .tile {
+            background-color: #FFB347;
+            /* Laranja claro */
+            color: #4D2600;
+            /* Texto laranja escuro */
+        }
+
+        body.dark-mode.theme-orange .tile.correct-position {
+            background-color: #FF8C00;
+            /* Destaque laranja vibrante */
+            color: #ffffff;
+            /* Texto branco */
+        }
+
+        body.dark-mode.theme-orange .tile.empty {
+            background-color: #CC7000;
+            /* Cor do tabuleiro laranja escuro */
+        }
+
+        /* Tema 7: Rosa no modo escuro */
+        body.dark-mode.theme-pink .board {
+            background-color: #8B004B;
+            /* Rosa escuro */
+        }
+
+        body.dark-mode.theme-pink .tile {
+            background-color: #FF99CC;
+            /* Rosa claro */
+            color: #4B0026;
+            /* Texto rosa escuro */
+        }
+
+        body.dark-mode.theme-pink .tile.correct-position {
+            background-color: #FF66A3;
+            /* Destaque rosa vibrante */
+            color: #ffffff;
+            /* Texto branco */
+        }
+
+        body.dark-mode.theme-pink .tile.empty {
+            background-color: #8B004B;
+            /* Cor do tabuleiro rosa escuro */
+        }
+
+        /* Tema 8: Cinza no modo escuro */
+        body.dark-mode.theme-gray .board {
+            background-color: #2F2F2F;
+            /* Cinza escuro */
+        }
+
+        body.dark-mode.theme-gray .tile {
+            background-color: #A9A9A9;
+            /* Cinza claro */
+            color: #1C1C1C;
+            /* Texto cinza escuro */
+        }
+
+        body.dark-mode.theme-gray .tile.correct-position {
+            background-color: #696969;
+            /* Destaque cinza médio */
+            color: #ffffff;
+            /* Texto branco */
+        }
+
+        body.dark-mode.theme-gray .tile.empty {
+            background-color: #2F2F2F;
+            /* Cor do tabuleiro cinza escuro */
+        }
+
+        .theme-controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            /* Espaçamento entre as setas e o tabuleiro */
+            margin-top: 20px;
+        }
+
+        .theme-arrow:hover {
+            background-color: #004080;
+        }
+
+        .left-arrow {
+            margin-right: 10px;
+        }
+
+        .right-arrow {
+            margin-left: 10px;
+        }
+
+        .win-message button {
+            margin: 0 10px;
+            /* Espaçamento horizontal entre os botões */
+        }
+
+        .win-message .play-again-btn {
+            margin: 0 10px;
+            /* Espaçamento horizontal entre os botões */
+        }
+
+        .icon-controls {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 10px;
+            position: relative;
+        }
+
+        .icon-btn {
+            width: 40px;
+            /* Define uma largura fixa */
+            height: 40px;
+            /* Define uma altura fixa */
+            margin: 0;
+            /* Remove margens individuais */
+            padding: 0;
+            /* Remove espaçamento interno */
+            border: none;
+            border-radius: 50%;
+            /* Torna o botão circular */
+            background-color: rgba(255, 255, 255, 0.8);
+            color: #002147;
+            font-size: 20px;
+            /* Tamanho do ícone */
+            display: flex;
+            /* Garante alinhamento do conteúdo */
+            justify-content: center;
+            /* Centraliza horizontalmente */
+            align-items: center;
+            /* Centraliza verticalmente */
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .icon-btn:hover {
+            background-color: rgba(255, 255, 255, 1);
+            color: #004080;
+        }
+
+        /* Remova margens específicas de botões como .restart-btn e .ranking-btn */
+        .restart-btn,
+        .ranking-btn {
+            margin: 0;
+            /* Remove margens extras */
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            /* Posiciona logo abaixo do botão */
+            left: 60%;
+            /* Move um pouco mais para a direita */
+            transform: translateX(-50%);
+            /* Centraliza em relação ao ponto definido por 'left' */
+            background-color: #ffffff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            padding: 10px;
+        }
+
+        .dropdown-menu button {
+            background-color: #002147;
+            color: #fff;
+            font-size: 14px;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 5px;
+            width: 100%;
+            text-align: left;
+        }
+
+        .dropdown-menu button:hover {
+            background-color: #004080;
+        }
+
+        .upload-btn {
+            background-color: rgba(255, 255, 255, 0.8);
+            /* Fundo claro */
+            color: #002147;
+            /* Cor do ícone */
+            font-size: 20px;
+            /* Tamanho do ícone */
+            padding: 10px;
+            border: none;
+            border-radius: 50%;
+            /* Fundo circular */
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            /* Sombra para destaque */
+        }
+
+        .upload-btn:hover {
+            background-color: rgba(255, 255, 255, 1);
+            /* Fundo mais claro no hover */
+            color: #004080;
+            /* Cor mais vibrante no hover */
+        }
+
+        /* Tema Azul */
+        body.theme-blue .board,
+        body.theme-blue .board-options,
+        body.theme-blue .game-container {
+            background-color: #002147;
+        }
+
+        /* Tema Verde */
+        body.theme-green .board,
+        body.theme-green .board-options,
+        body.theme-green .game-container {
+            background-color: #004d00;
+        }
+
+        /* Tema Vermelho */
+        body.theme-red .board,
+        body.theme-red .board-options,
+        body.theme-red .game-container {
+            background-color: #660000;
+        }
+
+        /* Tema Roxo */
+        body.theme-purple .board,
+        body.theme-purple .board-options,
+        body.theme-purple .game-container {
+            background-color: #4b0082;
+        }
+
+        /* Tema Amarelo */
+        body.theme-yellow .board,
+        body.theme-yellow .board-options,
+        body.theme-yellow .game-container {
+            background-color: #ffcc00;
+        }
+
+        /* Tema Laranja */
+        body.theme-orange .board,
+        body.theme-orange .board-options,
+        body.theme-orange .game-container {
+            background-color: #FF8C00;
+            /* Laranja escuro */
+        }
+
+        /* Tema Rosa */
+        body.theme-pink .board,
+        body.theme-pink .board-options,
+        body.theme-pink .game-container {
+            background-color: #FF1493;
+            /* Rosa escuro */
+        }
+
+        /* Tema Cinza */
+        body.theme-gray .board,
+        body.theme-gray .board-options,
+        body.theme-gray .game-container {
+            background-color: #696969;
+            /* Cinza escuro */
+        }
+
+        /* Tema Azul no modo escuro */
+        body.dark-mode.theme-blue .board,
+        body.dark-mode.theme-blue .board-options,
+        body.dark-mode.theme-blue .game-container {
+            background-color: #00122b;
+            /* Azul escuro */
+        }
+
+        /* Tema Verde no modo escuro */
+        body.dark-mode.theme-green .board,
+        body.dark-mode.theme-green .board-options,
+        body.dark-mode.theme-green .game-container {
+            background-color: #002200;
+            /* Verde escuro */
+        }
+
+        /* Tema Vermelho no modo escuro */
+        body.dark-mode.theme-red .board,
+        body.dark-mode.theme-red .board-options,
+        body.dark-mode.theme-red .game-container {
+            background-color: #330000;
+            /* Vermelho escuro */
+        }
+
+        /* Tema Roxo no modo escuro */
+        body.dark-mode.theme-purple .board,
+        body.dark-mode.theme-purple .board-options,
+        body.dark-mode.theme-purple .game-container {
+            background-color: #2e004d;
+            /* Roxo escuro */
+        }
+
+        /* Tema Amarelo no modo escuro */
+        body.dark-mode.theme-yellow .board,
+        body.dark-mode.theme-yellow .board-options,
+        body.dark-mode.theme-yellow .game-container {
+            background-color: #664d00;
+            /* Amarelo escuro */
+        }
+
+        /* Tema Laranja no modo escuro */
+        body.dark-mode.theme-orange .board,
+        body.dark-mode.theme-orange .board-options,
+        body.dark-mode.theme-orange .game-container {
+            background-color: #CC7000;
+            /* Laranja escuro no modo escuro */
+        }
+
+        /* Tema Rosa no modo escuro */
+        body.dark-mode.theme-pink .board,
+        body.dark-mode.theme-pink .board-options,
+        body.dark-mode.theme-pink .game-container {
+            background-color: #8B004B;
+            /* Rosa escuro no modo escuro */
+        }
+
+        /* Tema Cinza no modo escuro */
+        body.dark-mode.theme-gray .board,
+        body.dark-mode.theme-gray .board-options,
+        body.dark-mode.theme-gray .game-container {
+            background-color: #2F2F2F;
+            /* Cinza escuro no modo escuro */
+        }
+
+        .board-footer {
+            display: flex;
+            justify-content: space-between;
+            /* Espaça os elementos uniformemente */
+            align-items: center;
+            /* Centraliza os itens verticalmente */
+            width: 100%;
+            /* Ocupa toda a largura do contêiner */
+            max-width: 480px;
+            /* Limita a largura máxima */
+            padding: 15px;
+            background-color: inherit;
+            /* Herda a cor do tema */
+            border-radius: 0 0 10px 10px;
+            /* Bordas arredondadas na parte inferior */
+            box-shadow: none;
+            /* Remove a sombra superior */
+            box-sizing: border-box;
+            margin-top: -5px;
+            /* Reduz a margem superior para integrar melhor ao tabuleiro */
+        }
+
+        .toggle-mode-btn {
+            background-color: rgba(255, 255, 255, 0.8);
+            /* Fundo claro */
+            color: #002147;
+            /* Cor do ícone */
+            font-size: 20px;
+            /* Tamanho do ícone */
+            padding: 10px;
+            border: none;
+            border-radius: 50%;
+            /* Fundo circular */
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            /* Sombra para destaque */
+        }
+
+        .toggle-mode-btn:hover {
+            background-color: rgba(255, 255, 255, 1);
+            /* Fundo mais claro no hover */
+            color: #004080;
+            /* Cor mais vibrante no hover */
+        }
+
+        /* Estilos para telas menores (smartphones) */
+        @media screen and (max-width: 600px) {
+            .title {
+                font-size: 1.5em;
+            }
+
+            .board {
+                width: 90vw;
+                height: 90vw;
+                padding: 10px;
+            }
+
+            .tile {
+                font-size: 1.2em;
+            }
+
+            .controls {
+                flex-direction: column;
+                /* Empilha os botões verticalmente */
+                align-items: center;
+                /* Centraliza os botões */
+            }
+
+            .btn {
+                width: 80%;
+                /* Garante que os botões ocupem a largura total */
+                margin-bottom: 10px;
+                /* Adiciona espaçamento entre os botões */
+            }
+
+            .status-container {
+                flex-direction: column;
+                /* Empilha as informações de status */
+                gap: 10px;
+                padding: 10px;
+            }
+
+            .info-message {
+                padding: 10px;
+                font-size: 0.9em;
+            }
+
+            .win-message {
+                padding: 20px;
+                font-size: 1em;
+            }
+
+            .scoreboard-container {
+                width: 90%;
+                margin-left: 0;
+                /* Remove a margem esquerda */
+            }
+
+            .scoreboard-columns {
+                grid-template-columns: 1fr;
+                /* Uma coluna em telas pequenas */
+            }
+        }
     </style>
 </head>
 
 <body>
-    <button class="btn theme-toggle-btn" onclick="toggleDarkMode()">Modo Escuro</button>
     <div class="developer-info">
         Desenvolvido por Bruno Fortunato
     </div>
 
     <div class="title">15 Puzzle Game</div>
-    <div class="controls">
-        <button class="btn" onclick="confirmChange(3)">3x3</button>
-        <button class="btn" onclick="confirmChange(4)">4x4</button>
-        <button class="btn" onclick="confirmChange(5)">5x5</button>
-    </div>
-    <div class="controls">
-        <button class="btn" id="pauseBtn" onclick="togglePause()">Pausa</button>
-        <button class="btn" onclick="confirmRestart()">Reiniciar</button>
-    </div>
-
-    <div class="status-container">
-        <div class="icon">
-            🏁 <span id="moveCounter">0</span>
-        </div>
-        <div class="icon">
-            ⏳ <span id="timer">00:00:000</span>
-        </div>
-    </div>
-
     <div class="main-container">
-        <div class="game-container">
-            <div class="board" id="board"></div>
-        </div>
-        <div class="scoreboard-container">
-            <h2>Placar dos Melhores Resultados</h2>
-            <div class="scoreboard-columns">
-                <div class="scoreboard-column">
-                    <h3>3x3</h3>
-                    <div id="scoreboard-3x3-moves"></div>
-                    <div id="scoreboard-3x3-time"></div>
+        <div class="theme-controls">
+            <div class="game-container">
+                <div class="board-options">
+                    <div class="dropdown">
+                        <button class="icon-btn" onclick="toggleDropdown()"
+                            title="Alternar tamanho do tabuleiro">🔲</button>
+                        <div class="dropdown-menu" id="dropdownMenu">
+                            <button onclick="confirmChange(3)">3x3</button>
+                            <button onclick="confirmChange(4)">4x4</button>
+                            <button onclick="confirmChange(5)">5x5</button>
+                        </div>
+                    </div>
+                    <button class="icon-btn play-pause-btn" onclick="togglePause()" title="Pausa o jogo">⏸️</button>
+                    <button class="icon-btn restart-btn" onclick="confirmRestart()" title="Reinicia o jogo">🔄</button>
+                    <button class="icon-btn ranking-btn" onclick="showRankingOverlay()"
+                        title="Exibe o ranking">🏆</button>
+                    <button class="icon-btn upload-btn" onclick="document.getElementById('imageUpload').click()"
+                        title="Carregar imagem">🖼️</button>
+                    <input type="file" id="imageUpload" accept="image/*" style="display: none;"
+                        onchange="handleImageUpload(event)">
+                    <button class="icon-btn toggle-mode-btn" onclick="toggleTileMode()"
+                        title="Alternar entre números e imagens">🔢</button>
+                    <button class="icon-btn theme-mode-btn" onclick="toggleThemeMode()"
+                        title="Alternar entre modo claro e escuro">☀️</button>
                 </div>
-                <div class="scoreboard-column">
-                    <h3>4x4</h3>
-                    <div id="scoreboard-4x4-moves"></div>
-                    <div id="scoreboard-4x4-time"></div>
-                </div>
-                <div class="scoreboard-column">
-                    <h3>5x5</h3>
-                    <div id="scoreboard-5x5-moves"></div>
-                    <div id="scoreboard-5x5-time"></div>
+                <div class="board" id="board"></div>
+                <div class="board-footer">
+                    <button class="icon-btn theme-arrow left-arrow" onclick="changeThemeByArrow(-1)"
+                        title="Alterar tema anterior">
+                        &#9664; </button>
+                    <div class="status-container">
+                        <div class="icon">
+                            🏁 <span id="moveCounter">0</span>
+                        </div>
+                        <div class="icon">
+                            ⏳ <span id="timer">00:00:000</span>
+                        </div>
+                    </div>
+                    <button class="icon-btn theme-arrow right-arrow" onclick="changeThemeByArrow(1)"
+                        title="Alterar próximo tema">
+                        &#9654; </button>
                 </div>
             </div>
         </div>
@@ -456,6 +1295,8 @@
         let gameStarted = false;
         let tilesArray = [];
         let gameWon = false; // Adicionando a flag de vitória
+        let isImageMode = false; // Variável para controlar o modo atual
+        let currentImageUrl = ""; // Armazena a URL da imagem carregada
 
         const SCOREBOARD_KEY = 'puzzle15Scoreboard';
 
@@ -493,13 +1334,12 @@
             return storedScoreboard ? JSON.parse(storedScoreboard) : {};
         }
 
-        function updateScoreboardDisplay() {
-            console.log('Dados do placar:', getScoreboard());
+        function updateScoreboardDisplay(container = document) {
             const scoreboardData = getScoreboard();
             [3, 4, 5].forEach(size => {
                 const gameType = `${size}x${size}`;
-                const movesContainer = document.getElementById(`scoreboard-${size}x${size}-moves`);
-                const timesContainer = document.getElementById(`scoreboard-${size}x${size}-time`);
+                const movesContainer = container.querySelector(`#scoreboard-${size}x${size}-moves`);
+                const timesContainer = container.querySelector(`#scoreboard-${size}x${size}-time`);
 
                 if (movesContainer) {
                     movesContainer.innerHTML = "<strong>Melhores Movimentos:</strong><br>";
@@ -540,28 +1380,24 @@
                 console.error("Elemento 'board' não encontrado.");
                 return;
             }
+
             currentSize = size;
             moveCount = 0;
             gameStarted = false;
             isPaused = false;
-            gameWon = false; // Reinicia a flag de vitória
+            gameWon = false;
+
             document.getElementById("moveCounter").textContent = moveCount;
             resetTimer();
 
             board.innerHTML = "";
             board.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
-            board.style.width = `${size * 74}px`;
-            board.style.height = `${size * 74}px`;
-            board.classList.remove("paused", "game-over"); // Remove as classes
-            board.removeEventListener('click', handleTileClick); // Remove listener antigo
-            board.addEventListener('click', handleTileClick); // Adiciona listener
-
-            const pauseBtn = document.getElementById("pauseBtn");
-            pauseBtn.textContent = "Pausa";
+            board.style.gridTemplateRows = `repeat(${size}, 1fr)`;
 
             tilesArray = Array.from({ length: size * size - 1 }, (_, i) => String(i + 1));
             tilesArray.push("");
-            renderBoard();
+
+            renderBoard(); // Garante que os blocos sejam renderizados corretamente
             setTimeout(shuffleBoard, 100);
         }
 
@@ -578,23 +1414,97 @@
             tilesArray.forEach((num, index) => {
                 const tile = document.createElement("div");
                 tile.classList.add("tile");
-                tile.textContent = num;
                 tile.dataset.value = num;
 
                 if (num === "") {
                     tile.classList.add("empty");
+                    tile.style.backgroundImage = "none";
+                    tile.textContent = ""; // Remove o texto do bloco vazio
+                } else if (isImageMode && currentImageUrl) {
+                    const correctRow = Math.floor((parseInt(num) - 1) / currentSize);
+                    const correctCol = (parseInt(num) - 1) % currentSize;
+
+                    tile.style.backgroundImage = `url(${currentImageUrl})`;
+                    tile.style.backgroundSize = `${currentSize * 100}% ${currentSize * 100}%`;
+                    tile.style.backgroundPosition = `${(correctCol * 100) / (currentSize - 1)}% ${(correctRow * 100) / (currentSize - 1)}%`;
+                    tile.textContent = ""; // Remove os números
                 } else {
-                    const correctPosition = getCorrectPosition(num);
-                    if (index === correctPosition) {
-                        tile.classList.add("correct-position");
-                    } else {
-                        tile.classList.remove("correct-position");
-                    }
+                    tile.style.backgroundImage = "none"; // Remove a imagem
+                    tile.textContent = num; // Exibe os números
                 }
+
+                // Adiciona o evento de clique ao bloco
+                tile.addEventListener("click", handleTileClick);
 
                 board.appendChild(tile);
             });
         }
+
+        let themeMode = "light"; // Modo inicial: claro
+
+        function toggleThemeMode() {
+            const body = document.body;
+            const themeButton = document.querySelector(".theme-mode-btn");
+
+            if (body.classList.contains("dark-mode")) {
+                body.classList.remove("dark-mode");
+                themeButton.textContent = "☀️"; // Ícone para modo claro
+                localStorage.setItem("themeMode", "light");
+            } else {
+                body.classList.add("dark-mode");
+                themeButton.textContent = "🌙"; // Ícone para modo escuro
+                localStorage.setItem("themeMode", "dark");
+            }
+        }
+
+        // Carrega o modo salvo ao carregar a página
+        document.addEventListener("DOMContentLoaded", () => {
+            const savedThemeMode = localStorage.getItem("themeMode") || "light";
+            const themeButton = document.querySelector(".theme-mode-btn");
+
+            if (savedThemeMode === "dark") {
+                document.body.classList.add("dark-mode");
+                themeButton.textContent = "🌙";
+            } else {
+                themeButton.textContent = "☀️";
+            }
+        });
+
+        const imageUploadElement = document.getElementById('imageUpload');
+        let wasPaused = false; // Variável para rastrear se o jogo foi pausado pelo upload
+
+        imageUploadElement.addEventListener('click', () => {
+            console.log("Evento de clique no upload disparado.");
+            if (gameStarted && !isPaused) {
+                console.log("Jogo estava em andamento e não pausado. Pausando o jogo.");
+                clearInterval(timerInterval);
+                accumulatedTime += Date.now() - startTime;
+                wasPaused = true;
+                console.log(`wasPaused agora é: ${wasPaused}`);
+            } else {
+                console.log("Jogo já estava pausado ou não iniciado.");
+                wasPaused = true;
+                console.log(`wasPaused agora é: ${wasPaused}`);
+            }
+        });
+
+        imageUploadElement.addEventListener('change', () => {
+            console.log("Evento de change no upload disparado.");
+            console.log(`imageUploadElement.files.length: ${imageUploadElement.files.length}`);
+            console.log(`wasPaused: ${wasPaused}`);
+            if (imageUploadElement.files.length === 0 && wasPaused) {
+                console.log("Nenhum arquivo selecionado e jogo foi pausado por nós. Retomando o jogo.");
+                startTime = Date.now() - accumulatedTime;
+                timerInterval = setInterval(updateTimer, 1000);
+                isPaused = false;
+                wasPaused = false;
+                console.log(`isPaused agora é: ${isPaused}`);
+                console.log(`wasPaused agora é: ${wasPaused}`);
+            } else {
+                console.log("Arquivo selecionado ou jogo não foi pausado pelo upload. Chamando handleImageUpload.");
+                handleImageUpload(event);
+            }
+        });
 
         function isSolvable(tilesArray, size) {
             if (tilesArray.length !== size * size) {
@@ -764,16 +1674,22 @@
                 return;
             }
             const board = document.getElementById("board");
-            const pauseBtn = document.getElementById("pauseBtn");
+            const pauseBtn = document.querySelector(".play-pause-btn"); // Seleciona o botão de play/pausa
             isPaused = !isPaused;
             board.classList.toggle("paused", isPaused);
-            pauseBtn.textContent = isPaused ? "Continuar" : "Pausa";
 
+            // Alterna o ícone e o título do botão
             if (isPaused) {
+                pauseBtn.textContent = "▶️"; // Ícone de continuar
+                pauseBtn.title = "Continuar o jogo"; // Atualiza o título
                 clearInterval(timerInterval);
                 accumulatedTime += Date.now() - startTime; // Atualiza o tempo acumulado
-            } else if (gameStarted) {
-                startTimer();
+            } else {
+                pauseBtn.textContent = "⏸️"; // Ícone de pausa
+                pauseBtn.title = "Pausar o jogo"; // Atualiza o título
+                if (gameStarted) {
+                    startTimer();
+                }
             }
         }
 
@@ -883,6 +1799,7 @@
 
         function checkWin() {
             if (gameWon) return; // Evita reexecução desnecessária
+
             const solvedBoard = [];
             for (let i = 1; i < currentSize * currentSize; i++) {
                 solvedBoard.push(String(i));
@@ -897,11 +1814,7 @@
                 }
             }
 
-            console.log('Tabuleiro Solucionado Esperado:', solvedBoard);
-            console.log('Tabuleiro Atual:', tilesArray);
-
             if (hasWon) {
-                console.log('Vitória DETECTADA!');
                 gameWon = true; // Define a flag de vitória
                 clearInterval(timerInterval);
                 const finalTime = document.getElementById("timer").textContent;
@@ -909,8 +1822,6 @@
                 updateScoreboardDisplay();
 
                 mostrarTelaDeVitoria(finalTime);
-            } else {
-                console.log('Ainda não venceu.');
             }
         }
 
@@ -946,22 +1857,221 @@
             generateBoard(currentSize);
         }
 
-        function toggleDarkMode() {
-            const body = document.body;
-            body.classList.toggle('dark-mode');
+        function handleImageUpload(event) {
+            const file = event.target.files[0];
+            if (!file) {
+                // Se o usuário cancelar o upload, retome o cronômetro
+                if (gameStarted && isPaused) {
+                    isPaused = false; // Atualiza o estado de pausa
+                    startTimer(); // Retoma o cronômetro
+                }
+                return;
+            }
 
-            const darkModeButton = document.querySelector('.theme-toggle-btn');
-            if (body.classList.contains('dark-mode')) {
-                darkModeButton.textContent = "Modo Claro";
-            } else {
-                darkModeButton.textContent = "Modo Escuro";
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                const imageUrl = e.target.result;
+                applyImageToTiles(imageUrl);
+
+                // Retome o cronômetro após o upload
+                if (gameStarted && isPaused) {
+                    isPaused = false; // Atualiza o estado de pausa
+                    startTimer(); // Retoma o cronômetro
+                }
+            };
+            reader.readAsDataURL(file);
+        }
+
+        // Pausa o cronômetro ao abrir o seletor de arquivos
+        document.getElementById('imageUpload').addEventListener('click', () => {
+            if (gameStarted && !isPaused) {
+                isPaused = true; // Pausa o jogo
+                clearInterval(timerInterval); // Pausa o cronômetro
+                accumulatedTime += Date.now() - startTime; // Atualiza o tempo acumulado
+            }
+        });
+
+        // Retoma o cronômetro se o upload for cancelado ou o seletor de arquivos perder o foco
+        document.getElementById('imageUpload').addEventListener('focusout', () => {
+            if (gameStarted && isPaused) {
+                isPaused = false; // Atualiza o estado de pausa
+                startTimer(); // Retoma o cronômetro
+            }
+        });
+
+        // Retoma o cronômetro se o upload for cancelado explicitamente
+        document.getElementById('imageUpload').addEventListener('change', (event) => {
+            if (!event.target.files[0] && gameStarted && isPaused) {
+                isPaused = false; // Atualiza o estado de pausa
+                startTimer(); // Retoma o cronômetro
+            }
+        });
+
+        function applyImageToTiles(imageUrl) {
+            currentImageUrl = imageUrl; // Salva a URL da imagem atual
+            isImageMode = true; // Ativa o modo de imagem
+            renderBoard(); // Re-renderiza o tabuleiro com a imagem
+        }
+
+        function showRankingOverlay() {
+            const wasTimerRunning = gameStarted && !isPaused; // Verifica se o cronômetro estava rodando
+
+            if (wasTimerRunning) {
+                clearInterval(timerInterval); // Pausa o cronômetro
+                accumulatedTime += Date.now() - startTime; // Atualiza o tempo acumulado
+            }
+
+            const rankingOverlay = document.createElement('div');
+            rankingOverlay.classList.add('win-overlay');
+
+            const rankingMessage = document.createElement('div');
+            rankingMessage.classList.add('win-message');
+
+            const title = document.createElement('h2');
+            title.textContent = "Ranking";
+
+            const closeButton = document.createElement('button');
+            closeButton.classList.add('play-again-btn');
+            closeButton.textContent = "Fechar";
+            closeButton.onclick = () => {
+                rankingOverlay.remove();
+                if (wasTimerRunning) {
+                    startTimer(); // Retoma o cronômetro
+                }
+            };
+
+            const scoreboardContainer = document.createElement('div');
+            scoreboardContainer.classList.add('scoreboard-columns');
+            scoreboardContainer.innerHTML = `
+                <div class="scoreboard-column">
+                    <h3>3x3</h3>
+                    <div id="scoreboard-3x3-moves"></div>
+                    <div id="scoreboard-3x3-time"></div>
+                </div>
+                <div class="scoreboard-column">
+                    <h3>4x4</h3>
+                    <div id="scoreboard-4x4-moves"></div>
+                    <div id="scoreboard-4x4-time"></div>
+                </div>
+                <div class="scoreboard-column">
+                    <h3>5x5</h3>
+                    <div id="scoreboard-5x5-moves"></div>
+                    <div id="scoreboard-5x5-time"></div>
+                </div>
+            `;
+
+            rankingMessage.appendChild(title);
+            rankingMessage.appendChild(scoreboardContainer);
+            rankingMessage.appendChild(closeButton);
+            rankingOverlay.appendChild(rankingMessage);
+            document.body.appendChild(rankingOverlay);
+
+            setTimeout(() => {
+                rankingOverlay.classList.add('active');
+            }, 10);
+
+            // Atualiza os dados do placar no overlay
+            updateScoreboardDisplay(rankingOverlay);
+        }
+
+        const themes = [
+            'theme-blue',   // Azul
+            'theme-yellow', // Amarelo
+            'theme-gray',   // Cinza
+            'theme-orange', // Laranja
+            'theme-pink',   // Rosa
+            'theme-purple', // Roxo
+            'theme-green',  // Verde
+            'theme-red'     // Vermelho
+        ];
+
+        function changeTheme(theme) {
+            const body = document.body;
+            const gameContainer = document.querySelector('.game-container'); // Seleciona o container do jogo
+            const boardOptions = document.querySelector('.board-options'); // Seleciona a barra de opções
+
+            // Remove todas as classes de tema do body, do container do jogo e da barra de opções
+            themes.forEach(t => {
+                body.classList.remove(t);
+                if (gameContainer) gameContainer.classList.remove(t);
+                if (boardOptions) boardOptions.classList.remove(t);
+            });
+
+            // Adiciona a classe do tema selecionado ao body, ao container do jogo e à barra de opções
+            body.classList.add(theme);
+            if (gameContainer) gameContainer.classList.add(theme);
+            if (boardOptions) boardOptions.classList.add(theme);
+
+            // Salva o tema no localStorage para manter a preferência do usuário
+            localStorage.setItem('selectedTheme', theme);
+
+            // Atualiza o seletor de temas
+            const themeSelector = document.getElementById('themeSelector');
+            if (themeSelector) {
+                themeSelector.value = theme;
             }
         }
 
+        function changeThemeByArrow(direction) {
+            const body = document.body;
+            const currentTheme = themes.find(theme => body.classList.contains(theme));
+            let currentIndex = themes.indexOf(currentTheme);
+
+            // Verifica se o tema atual foi encontrado
+            if (currentIndex === -1) {
+                currentIndex = 0; // Define o índice como 0 se nenhum tema for encontrado
+            }
+
+            // Calcula o próximo índice
+            currentIndex = (currentIndex + direction + themes.length) % themes.length;
+
+            // Aplica o próximo tema
+            const newTheme = themes[currentIndex];
+            changeTheme(newTheme);
+        }
+
+        // Carrega o tema salvo ao carregar a página
         document.addEventListener("DOMContentLoaded", () => {
+            const savedTheme = localStorage.getItem('selectedTheme') || 'theme-blue';
+            changeTheme(savedTheme);
+            document.getElementById('themeSelector').value = savedTheme;
+        });
+
+        document.addEventListener("DOMContentLoaded", () => {
+            // Define o tema padrão como azul
+            const defaultTheme = 'theme-blue';
+            changeTheme(defaultTheme); // Aplica o tema padrão
+
+            // Gera o tabuleiro inicial e atualiza o placar
             generateBoard(4);
             updateScoreboardDisplay();
         });
+
+        document.getElementById('imageUpload').addEventListener('click', () => {
+            if (gameStarted && !isPaused) {
+                clearInterval(timerInterval); // Pausa o cronômetro
+                accumulatedTime += Date.now() - startTime; // Atualiza o tempo acumulado
+            }
+        });
+
+        function toggleDropdown() {
+            const dropdownMenu = document.getElementById("dropdownMenu");
+            dropdownMenu.style.display = dropdownMenu.style.display === "block" ? "none" : "block";
+        }
+
+        // Fecha o menu suspenso ao clicar fora dele
+        document.addEventListener("click", (event) => {
+            const dropdown = document.querySelector(".dropdown");
+            if (!dropdown.contains(event.target)) {
+                const dropdownMenu = document.getElementById("dropdownMenu");
+                dropdownMenu.style.display = "none";
+            }
+        });
+
+        function toggleTileMode() {
+            isImageMode = !isImageMode; // Alterna entre números e imagens
+            renderBoard(); // Re-renderiza o tabuleiro com base no modo atual
+        }
     </script>
 </body>
 
